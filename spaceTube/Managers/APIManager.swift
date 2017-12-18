@@ -10,7 +10,7 @@ import Foundation
 
 class APIManager {
     init(){}
-    let session = URLSession(configuration: .default)
+    private let session = URLSession(configuration: .default)
     
     func getApiData(from endpoint: URL, callback: @escaping ((Data?) -> Void)) {
         let request = URLRequest(url: endpoint, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 60.0)

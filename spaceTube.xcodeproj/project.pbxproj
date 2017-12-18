@@ -19,7 +19,6 @@
 		041671B31FE3747F00B96429 /* VideoGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041671B21FE3747F00B96429 /* VideoGetter.swift */; };
 		049B475D1FE4B54F0023209C /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B475C1FE4B54F0023209C /* VideoTableViewCell.swift */; };
 		049B475F1FE4FCC10023209C /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B475E1FE4FCC10023209C /* VideoPlayerViewController.swift */; };
-		049B47611FE518640023209C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B47601FE518640023209C /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +56,6 @@
 		041671B21FE3747F00B96429 /* VideoGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGetter.swift; sourceTree = "<group>"; };
 		049B475C1FE4B54F0023209C /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VideoTableViewCell.swift; path = spaceTube/Controllers/VideoTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		049B475E1FE4FCC10023209C /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
-		049B47601FE518640023209C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "spaceTube/Supporting Files/Constants.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				0416717D1FE3623C00B96429 /* AppDelegate.swift */,
-				049B47601FE518640023209C /* Constants.swift */,
 				041671841FE3623C00B96429 /* Assets.xcassets */,
 				041671891FE3623C00B96429 /* Info.plist */,
 			);
@@ -312,7 +309,6 @@
 				041671801FE3623C00B96429 /* VideoGalleryController.swift in Sources */,
 				041671B31FE3747F00B96429 /* VideoGetter.swift in Sources */,
 				049B475F1FE4FCC10023209C /* VideoPlayerViewController.swift in Sources */,
-				049B47611FE518640023209C /* Constants.swift in Sources */,
 				0416717E1FE3623C00B96429 /* AppDelegate.swift in Sources */,
 				049B475D1FE4B54F0023209C /* VideoTableViewCell.swift in Sources */,
 			);

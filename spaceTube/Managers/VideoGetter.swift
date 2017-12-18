@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol UpdatedVideos {
+protocol UpdatedVideos: class {
     func updatedVideos()
 }
 
 class Video {
-    var title: String
+    let title: String
     var href: URL?
     var videoUrls: [String]
     
@@ -26,19 +26,19 @@ class Video {
 
 class VideoGetter {
     private var api = APIManager()
-    var videos: [Video] = [] {
+    public var videos: [Video] = [] {
         didSet {
-            delegate.updatedVideos()
+            delegate?.updatedVideos()
         }
     }
-    var delegate: UpdatedVideos
+    weak var delegate: UpdatedVideos?
     
     init(delegate: UpdatedVideos){
         self.videos = []
         self.delegate = delegate
     }
     
-    func getVideosFromApi() {
+    public func getVideosFromApi() {
         guard let endpoint = URL(string: "https://images-api.nasa.gov/search?q=mars&media_type=video") else {
             print("Couldn't get url from nasa api string")
             return
@@ -50,7 +50,7 @@ class VideoGetter {
         }
     }
     
-    func formatVideos(from data: Data) -> [Video]? {
+    private func formatVideos(from data: Data) -> [Video]? {
         var videos: [Video] = []
         do {
             let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
@@ -77,7 +77,7 @@ class VideoGetter {
         return videos
     }
     
-    func getVideoUrl(video: Video, callback: @escaping ([String])->()) {
+    public func getVideoUrl(video: Video, callback: @escaping ([String])->()) {
         guard let hrefEndpoint = video.href else { return }
         
         api.getApiData(from: hrefEndpoint, callback: { (data) in

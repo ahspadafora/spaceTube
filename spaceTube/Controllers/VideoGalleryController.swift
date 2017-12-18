@@ -8,20 +8,24 @@
 
 import UIKit
 
+struct Constants {
+    static let segueId = "goToVideoPlayerVC"
+}
+
 class VideoGalleryController: UIViewController, UpdatedVideos {
     
     // MARK: - IBOutlets
     @IBOutlet weak var videoListTableView: UITableView!
     
     // MARK - Properties
-    var filteredVideos: [Video] = [] {
+    private var filteredVideos: [Video] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.videoListTableView.reloadData()
             }
         }
     }
-    var videoGetter: VideoGetter!
+    private var videoGetter: VideoGetter!
     
     // MARK: - Override Functions
     override func viewDidLoad() {
@@ -67,4 +71,5 @@ extension VideoGalleryController: UITableViewDelegate, UITableViewDataSource {
         performSegue(withIdentifier: Constants.segueId, sender: video)
     }
 }
+
 

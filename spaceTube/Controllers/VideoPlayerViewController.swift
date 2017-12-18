@@ -20,19 +20,19 @@ class VideoPlayerViewController: UIViewController {
     
     
     // MARK: - Properties
+    public var video: Video?
     private static var playerItemContext = 0
-    var isSeekInProgress = false
-    var chaseTime = kCMTimeZero
-    var video: Video?
-    var videoUrl: URL?
-    let avPlayer = AVPlayer()
-    var avPlayerLayer: AVPlayerLayer?
-    var playerItem: AVPlayerItem?
-    var asset: AVAsset?
-    var timeObserverToken: Any?
+    private var isSeekInProgress = false
+    private var chaseTime = kCMTimeZero
+    private var videoUrl: URL?
+    private let avPlayer = AVPlayer()
+    private var avPlayerLayer: AVPlayerLayer?
+    private var playerItem: AVPlayerItem?
+    private var asset: AVAsset?
+    private var timeObserverToken: Any?
     
     // MARK: - Computed Properties
-    var currentTime: Double {
+    private var currentTime: Double {
         get {
             return CMTimeGetSeconds(avPlayer.currentTime())
         }
@@ -41,11 +41,11 @@ class VideoPlayerViewController: UIViewController {
             avPlayer.seek(to: newTime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
         }
     }
-    var duration: Double {
+    private var duration: Double {
         guard let currentItem = avPlayer.currentItem else { return 0.0 }
         return CMTimeGetSeconds(currentItem.duration)
     }
-    var rate: Float {
+    private var rate: Float {
         get {
             return avPlayer.rate
         }
@@ -53,7 +53,7 @@ class VideoPlayerViewController: UIViewController {
             avPlayer.rate = newValue
         }
     }
-    let timeRemainingFormatter: DateComponentsFormatter = {
+    private let timeRemainingFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.zeroFormattingBehavior = .pad
         formatter.allowedUnits = [.minute, .second]
@@ -186,7 +186,7 @@ class VideoPlayerViewController: UIViewController {
     }
     
     // MARK: - Helper Functions
-    func presentErrorAlert(){
+    func presentErrorAlert() {
         let alert = UIAlertController(title: "Error", message: "There has been an error opening this video", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
