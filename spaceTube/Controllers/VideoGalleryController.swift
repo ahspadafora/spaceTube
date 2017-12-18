@@ -68,7 +68,9 @@ extension VideoGalleryController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let video = self.filteredVideos[indexPath.row]
-        performSegue(withIdentifier: Constants.segueId, sender: video)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Constants.segueId, sender: video)
+        }
     }
 }
 

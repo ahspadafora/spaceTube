@@ -87,7 +87,7 @@ class VideoPlayerViewController: UIViewController {
         avPlayerLayer?.frame = CGRect(x: 0, y: 40, width: view.bounds.width, height: view.bounds.height - 96.0)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         removeObservers()
         removePeriodicTimeObserver()
     }
