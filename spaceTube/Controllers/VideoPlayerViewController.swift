@@ -53,6 +53,12 @@ class VideoPlayerViewController: UIViewController {
             avPlayer.rate = newValue
         }
     }
+    let timeRemainingFormatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.zeroFormattingBehavior = .pad
+        formatter.allowedUnits = [.minute, .second]
+        return formatter
+    }()
     // MARK: - Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -230,13 +236,6 @@ class VideoPlayerViewController: UIViewController {
         playerItem?.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.status))
         avPlayer.removeObserver(self, forKeyPath: #keyPath(AVPlayer.currentItem.duration))
     }
-    
-    let timeRemainingFormatter: DateComponentsFormatter = {
-        let formatter = DateComponentsFormatter()
-        formatter.zeroFormattingBehavior = .pad
-        formatter.allowedUnits = [.minute, .second]
-        return formatter
-    }()
     
     func createTimeString(time: Float) -> String {
         let components = NSDateComponents()

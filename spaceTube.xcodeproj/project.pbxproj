@@ -109,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				041671B01FE3677B00B96429 /* Managers */,
-				0416717D1FE3623C00B96429 /* AppDelegate.swift */,
 				041671AB1FE3648800B96429 /* Controllers */,
 				041671AC1FE3649500B96429 /* Storyboards */,
 				041671AD1FE364A500B96429 /* Supporting Files */,
@@ -157,6 +156,7 @@
 		041671AD1FE364A500B96429 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0416717D1FE3623C00B96429 /* AppDelegate.swift */,
 				049B47601FE518640023209C /* Constants.swift */,
 				041671841FE3623C00B96429 /* Assets.xcassets */,
 				041671891FE3623C00B96429 /* Info.plist */,
