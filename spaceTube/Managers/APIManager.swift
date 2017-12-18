@@ -9,11 +9,8 @@
 import Foundation
 
 class APIManager {
-    private init(){}
-    
-    static let shared = APIManager()
+    init(){}
     let session = URLSession(configuration: .default)
-    
     
     func getApiData(from endpoint: URL, callback: @escaping ((Data?) -> Void)) {
         let request = URLRequest(url: endpoint, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 60.0)

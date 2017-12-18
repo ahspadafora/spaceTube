@@ -101,9 +101,10 @@ class VideoPlayerViewController: UIViewController {
                                context: context)
             return
         }
-        
+        // called when AVPlayerItem status is updated
         if keyPath == #keyPath(AVPlayerItem.status) {
             let status: AVPlayerItemStatus
+            // get current statue of AVPlayer
             if let statusNumber = change?[.newKey] as? NSNumber {
                 status = AVPlayerItemStatus(rawValue: statusNumber.intValue)!
             } else {
@@ -112,14 +113,13 @@ class VideoPlayerViewController: UIViewController {
             
             switch status {
             case .readyToPlay:
-                self.videoActivityIndicator.stopAnimating()
-                self.addPeriodicTimeObserver()
-                self.videoTimeSlider.isEnabled = true
+                videoFinishedLoadingSetUp()
             case .failed:
                 presentErrorAlert()
             case .unknown:
                 return
             }
+        // called when AVPlayer's current item's duration is updated
         } else if keyPath == #keyPath(AVPlayer.currentItem.duration) {
             let newDuration: CMTime
             if let newDurationAsValue = change?[NSKeyValueChangeKey.newKey] as? NSValue {
@@ -128,10 +128,12 @@ class VideoPlayerViewController: UIViewController {
             else {
                 newDuration = kCMTimeZero
             }
+            // check the new duration is valid & does not equal 0, then format for slider and label
             let hasValidDuration = newDuration.isNumeric && newDuration.value != 0
             let newDurationSeconds = hasValidDuration ? CMTimeGetSeconds(newDuration) : 0.0
             let currentTime = hasValidDuration ? Float(CMTimeGetSeconds(avPlayer.currentTime())) : 0.0
             
+            // updated video slider & duration label
             videoTimeSlider.maximumValue = Float(newDurationSeconds)
             videoTimeSlider.value = currentTime
             durationLabel.text = createTimeString(time: Float(newDurationSeconds))
@@ -158,16 +160,12 @@ class VideoPlayerViewController: UIViewController {
         }
     }
     // MARK: - Forward/Rewind Methods
-    func stopPlayingAndSeekSmoothlyToTime(newChaseTime:CMTime)
-    {
+    func stopPlayingAndSeekSmoothlyToTime(newChaseTime:CMTime) {
         avPlayer.pause()
         playPauseBttn.setImage(UIImage(named: "play"), for: .normal)
-        if CMTimeCompare(newChaseTime, chaseTime) != 0
-        {
-            chaseTime = newChaseTime;
-            
-            if !isSeekInProgress
-            {
+        if CMTimeCompare(newChaseTime, chaseTime) != 0 {
+            chaseTime = newChaseTime
+            if !isSeekInProgress {
                 seekToTime()
             }
         }
@@ -179,13 +177,9 @@ class VideoPlayerViewController: UIViewController {
         avPlayer.seek(to: seekTimeInProgress, toleranceBefore: kCMTimeZero,
                           toleranceAfter: kCMTimeZero, completionHandler:
             { (isFinished:Bool) -> Void in
-                
-                if CMTimeCompare(seekTimeInProgress, self.chaseTime) == 0
-                {
+                if CMTimeCompare(seekTimeInProgress, self.chaseTime) == 0 {
                     self.isSeekInProgress = false
-                }
-                else
-                {
+                } else {
                     self.seekToTime()
                 }
         })
@@ -242,6 +236,12 @@ class VideoPlayerViewController: UIViewController {
         components.second = Int(max(0.0, time))
         
         return timeRemainingFormatter.string(from: components as DateComponents)!
+    }
+    
+    func videoFinishedLoadingSetUp() {
+        self.videoActivityIndicator.stopAnimating()
+        self.addPeriodicTimeObserver()
+        self.videoTimeSlider.isEnabled = true
     }
 }
 

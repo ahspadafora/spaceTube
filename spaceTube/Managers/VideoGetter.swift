@@ -25,6 +25,7 @@ class Video {
 }
 
 class VideoGetter {
+    private var api = APIManager()
     var videos: [Video] = [] {
         didSet {
             delegate.updatedVideos()
@@ -42,7 +43,7 @@ class VideoGetter {
             print("Couldn't get url from nasa api string")
             return
         }
-        APIManager.shared.getApiData(from: endpoint) { (data) in
+        api.getApiData(from: endpoint) { (data) in
             guard let validData = data else { return }
             guard let videos = self.formatVideos(from: validData) else { return }
             self.videos = videos
@@ -79,7 +80,7 @@ class VideoGetter {
     func getVideoUrl(video: Video, callback: @escaping ([String])->()) {
         guard let hrefEndpoint = video.href else { return }
         
-        APIManager.shared.getApiData(from: hrefEndpoint, callback: { (data) in
+        api.getApiData(from: hrefEndpoint, callback: { (data) in
             guard let validData = data else { return }
             do {
                 guard let jsonData = try JSONSerialization.jsonObject(with: validData, options: []) as? [String] else { return }

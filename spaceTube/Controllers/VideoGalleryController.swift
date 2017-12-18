@@ -23,7 +23,7 @@ class VideoGalleryController: UIViewController, UpdatedVideos {
     }
     var videoGetter: VideoGetter!
     
-    // MARK: - ViewDidLoad
+    // MARK: - Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         self.videoGetter = VideoGetter(delegate: self)
@@ -32,9 +32,15 @@ class VideoGalleryController: UIViewController, UpdatedVideos {
         self.videoGetter.getVideosFromApi()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let video = sender as? Video,
+            let destinationVc = segue.destination as? VideoPlayerViewController else { return }
+        destinationVc.video = video
+    }
+    
+    // MARK: - Helper Functions
     func updatedVideos() {
         guard self.videoGetter.videos.count > 0 else { return }
-        
         self.videoGetter.videos.forEach { (video) in
             self.videoGetter.getVideoUrl(video: video, callback: { (videoUrls) in
                 guard videoUrls.count > 0 else { return }
@@ -42,12 +48,6 @@ class VideoGalleryController: UIViewController, UpdatedVideos {
                 self.filteredVideos.append(video)
             })
         }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let video = sender as? Video,
-            let destinationVc = segue.destination as? VideoPlayerViewController else { return }
-        destinationVc.video = video
     }
 }
 
