@@ -148,19 +148,19 @@ class VideoPlayerViewController: UIViewController {
     @IBAction func startStopVideo(_ sender: UIButton) {
         if avPlayer.rate > 0 {
             avPlayer.pause()
-            playPauseBttn.setImage(UIImage(named: "play"), for: .normal)
+            playPauseBttn.setImage(#imageLiteral(resourceName: "play"), for: .normal)
         } else {
             if currentTime == duration {
                 currentTime = 0.0
             }
             avPlayer.play()
-            playPauseBttn.setImage(UIImage(named: "pause"), for: .normal)
+            playPauseBttn.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
         }
     }
     // MARK: - Forward/Rewind Methods
     func stopPlayingAndSeekSmoothlyToTime(newChaseTime: CMTime) {
         avPlayer.pause()
-        playPauseBttn.setImage(UIImage(named: "play"), for: .normal)
+        playPauseBttn.setImage(#imageLiteral(resourceName: "play"), for: .normal)
         if CMTimeCompare(newChaseTime, chaseTime) != 0 {
             chaseTime = newChaseTime
             if !isSeekInProgress {
@@ -173,7 +173,7 @@ class VideoPlayerViewController: UIViewController {
         isSeekInProgress = true
         let seekTimeInProgress = chaseTime
         avPlayer.seek(to: seekTimeInProgress, toleranceBefore: kCMTimeZero,
-                          toleranceAfter: kCMTimeZero, completionHandler: { (isFinished: Bool) -> Void in
+                      toleranceAfter: kCMTimeZero, completionHandler: { (isFinished: Bool) -> Void in
                 if CMTimeCompare(seekTimeInProgress, self.chaseTime) == 0 {
                     self.isSeekInProgress = false
                 } else {

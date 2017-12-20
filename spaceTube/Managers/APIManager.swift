@@ -10,6 +10,7 @@ import Foundation
 
 class APIManager {
     init() {}
+
     private let session = URLSession(configuration: .default)
 
     func getApiData(from endpoint: URL, callback: @escaping ((Data?) -> Void)) {
