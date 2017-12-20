@@ -6,19 +6,18 @@
 //  Copyright © 2017 Amber Spadafora. All rights reserved.
 //
 
-import UIKit
 import AVFoundation
+import UIKit
 
 class VideoPlayerViewController: UIViewController {
-    
+
     // MARK: - IBOutlets
     @IBOutlet weak var playPauseBttn: UIButton!
     @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var videoTimeSlider: UISlider!
     @IBOutlet weak var videoActivityIndicator: UIActivityIndicatorView!
-    
-    
+
     // MARK: - Properties
     public var video: Video?
     private static var playerItemContext = 0
@@ -30,7 +29,7 @@ class VideoPlayerViewController: UIViewController {
     private var playerItem: AVPlayerItem?
     private var asset: AVAsset?
     private var timeObserverToken: Any?
-    
+
     // MARK: - Computed Properties
     private var currentTime: Double {
         get {
@@ -68,32 +67,32 @@ class VideoPlayerViewController: UIViewController {
             return
         }
         self.title = video.title
-        
+
         self.videoTimeSlider.isEnabled = false
-        
-        let mobileVideoString = video.videoUrls.first { (string) -> Bool in
-            return string.contains("mobile")
+
+        let mobileVideoString = video.videoUrls.first { string -> Bool in
+            string.contains("mobile")
         }
-        
+
         guard let vidUrlString = mobileVideoString,
             let videoUrl = URL(string: vidUrlString) else { return }
-        
+
         prepareVideo(url: videoUrl)
         view.layer.insertSublayer(avPlayerLayer!, at: 0)
     }
-    
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         avPlayerLayer?.frame = CGRect(x: 0, y: 40, width: view.bounds.width, height: view.bounds.height - 96.0)
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         removeObservers()
         removePeriodicTimeObserver()
     }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+
         guard context == &VideoPlayerViewController.playerItemContext else {
             super.observeValue(forKeyPath: keyPath,
                                of: object,
@@ -110,7 +109,7 @@ class VideoPlayerViewController: UIViewController {
             } else {
                 status = .unknown
             }
-            
+
             switch status {
             case .readyToPlay:
                 videoFinishedLoadingSetUp()
@@ -124,45 +123,44 @@ class VideoPlayerViewController: UIViewController {
             let newDuration: CMTime
             if let newDurationAsValue = change?[NSKeyValueChangeKey.newKey] as? NSValue {
                 newDuration = newDurationAsValue.timeValue
-            }
-            else {
+            } else {
                 newDuration = kCMTimeZero
             }
             // check the new duration is valid & does not equal 0, then format for slider and label
             let hasValidDuration = newDuration.isNumeric && newDuration.value != 0
             let newDurationSeconds = hasValidDuration ? CMTimeGetSeconds(newDuration) : 0.0
             let currentTime = hasValidDuration ? Float(CMTimeGetSeconds(avPlayer.currentTime())) : 0.0
-            
+
             // updated video slider & duration label
             videoTimeSlider.maximumValue = Float(newDurationSeconds)
             videoTimeSlider.value = currentTime
             durationLabel.text = createTimeString(time: Float(newDurationSeconds))
         }
     }
-    
+
     // MARK: - IBAction Methods
     @IBAction func videoSliderChanged(_ sender: UISlider) {
         let timeScale = CMTimeScale(NSEC_PER_SEC)
         let time = CMTime(seconds: Double(sender.value), preferredTimescale: timeScale)
         stopPlayingAndSeekSmoothlyToTime(newChaseTime: time)
     }
-    
+
     @IBAction func startStopVideo(_ sender: UIButton) {
         if avPlayer.rate > 0 {
             avPlayer.pause()
-            playPauseBttn.setImage(UIImage(named: "play"), for: .normal)
+            playPauseBttn.setImage(#imageLiteral(resourceName: "play"), for: .normal)
         } else {
             if currentTime == duration {
                 currentTime = 0.0
             }
             avPlayer.play()
-            playPauseBttn.setImage(UIImage(named: "pause"), for: .normal)
+            playPauseBttn.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
         }
     }
     // MARK: - Forward/Rewind Methods
-    func stopPlayingAndSeekSmoothlyToTime(newChaseTime:CMTime) {
+    func stopPlayingAndSeekSmoothlyToTime(newChaseTime: CMTime) {
         avPlayer.pause()
-        playPauseBttn.setImage(UIImage(named: "play"), for: .normal)
+        playPauseBttn.setImage(#imageLiteral(resourceName: "play"), for: .normal)
         if CMTimeCompare(newChaseTime, chaseTime) != 0 {
             chaseTime = newChaseTime
             if !isSeekInProgress {
@@ -175,8 +173,7 @@ class VideoPlayerViewController: UIViewController {
         isSeekInProgress = true
         let seekTimeInProgress = chaseTime
         avPlayer.seek(to: seekTimeInProgress, toleranceBefore: kCMTimeZero,
-                          toleranceAfter: kCMTimeZero, completionHandler:
-            { (isFinished:Bool) -> Void in
+                      toleranceAfter: kCMTimeZero, completionHandler: { (isFinished: Bool) -> Void in
                 if CMTimeCompare(seekTimeInProgress, self.chaseTime) == 0 {
                     self.isSeekInProgress = false
                 } else {
@@ -184,7 +181,7 @@ class VideoPlayerViewController: UIViewController {
                 }
         })
     }
-    
+
     // MARK: - Helper Functions
     func presentErrorAlert() {
         let alert = UIAlertController(title: "Error", message: "There has been an error opening this video", preferredStyle: .alert)
@@ -192,7 +189,7 @@ class VideoPlayerViewController: UIViewController {
         alert.addAction(cancelAction)
         self.present(alert, animated: false)
     }
-    
+
     func prepareVideo(url: URL) {
         let assetKeys = [
             "playable",
@@ -205,7 +202,7 @@ class VideoPlayerViewController: UIViewController {
         avPlayer.addObserver(self, forKeyPath: #keyPath(AVPlayer.currentItem.duration), options: [.new, .initial], context: &VideoPlayerViewController.playerItemContext)
         avPlayer.replaceCurrentItem(with: playerItem)
     }
-    
+
     func addPeriodicTimeObserver() {
         let timeScale = CMTimeScale(NSEC_PER_SEC)
         let time = CMTime(seconds: 0.5, preferredTimescale: timeScale)
@@ -218,31 +215,29 @@ class VideoPlayerViewController: UIViewController {
             self?.durationLabel.text = self?.createTimeString(time: timeRemaining)
         })
     }
-    
+
     func removePeriodicTimeObserver() {
         if let timeObserverToken = timeObserverToken {
             avPlayer.removeTimeObserver(timeObserverToken)
             self.timeObserverToken = nil
         }
     }
-    
+
     func removeObservers() {
         playerItem?.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.status))
         avPlayer.removeObserver(self, forKeyPath: #keyPath(AVPlayer.currentItem.duration))
     }
-    
+
     func createTimeString(time: Float) -> String {
         let components = NSDateComponents()
         components.second = Int(max(0.0, time))
-        
+
         return timeRemainingFormatter.string(from: components as DateComponents)!
     }
-    
+
     func videoFinishedLoadingSetUp() {
         self.videoActivityIndicator.stopAnimating()
         self.addPeriodicTimeObserver()
         self.videoTimeSlider.isEnabled = true
     }
 }
-
-

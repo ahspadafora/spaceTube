@@ -9,12 +9,13 @@
 import Foundation
 
 class APIManager {
-    init(){}
+    init() {}
+
     private let session = URLSession(configuration: .default)
-    
+
     func getApiData(from endpoint: URL, callback: @escaping ((Data?) -> Void)) {
         let request = URLRequest(url: endpoint, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 60.0)
-        let task = session.dataTask(with: request) { (data, response, error) in
+        let task = session.dataTask(with: request) { data, response, error in
             guard error == nil else {
                 print(error!.localizedDescription)
                 return
@@ -23,6 +24,5 @@ class APIManager {
         }
         task.resume()
     }
-    
-    
+
 }

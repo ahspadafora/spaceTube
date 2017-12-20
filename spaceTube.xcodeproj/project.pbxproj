@@ -15,10 +15,11 @@
 		041671931FE3623C00B96429 /* spaceTubeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041671921FE3623C00B96429 /* spaceTubeTests.swift */; };
 		0416719E1FE3623C00B96429 /* spaceTubeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0416719D1FE3623C00B96429 /* spaceTubeUITests.swift */; };
 		041671AF1FE3677600B96429 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041671AE1FE3677600B96429 /* APIManager.swift */; };
-		041671B11FE36DE000B96429 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 041671891FE3623C00B96429 /* Info.plist */; };
 		041671B31FE3747F00B96429 /* VideoGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041671B21FE3747F00B96429 /* VideoGetter.swift */; };
 		049B475D1FE4B54F0023209C /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B475C1FE4B54F0023209C /* VideoTableViewCell.swift */; };
 		049B475F1FE4FCC10023209C /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B475E1FE4FCC10023209C /* VideoPlayerViewController.swift */; };
+		38109EC1FBE8473560A05569 /* Pods_spaceTubeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C922E7DA6553992CA8FF4AC /* Pods_spaceTubeTests.framework */; };
+		6BDEBE1CCC508A2F67F9BA3D /* Pods_spaceTube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61DC14CA0420A9AB893ACB4B /* Pods_spaceTube.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,12 @@
 		041671B21FE3747F00B96429 /* VideoGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGetter.swift; sourceTree = "<group>"; };
 		049B475C1FE4B54F0023209C /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VideoTableViewCell.swift; path = spaceTube/Controllers/VideoTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		049B475E1FE4FCC10023209C /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		3C922E7DA6553992CA8FF4AC /* Pods_spaceTubeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spaceTubeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		61DC14CA0420A9AB893ACB4B /* Pods_spaceTube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spaceTube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		861472BC897347C02E2C0A45 /* Pods-spaceTubeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spaceTubeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-spaceTubeTests/Pods-spaceTubeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CCED20E51E4FF4082D20419F /* Pods-spaceTubeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spaceTubeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-spaceTubeTests/Pods-spaceTubeTests.release.xcconfig"; sourceTree = "<group>"; };
+		E9A585E599907950E1E5ACCA /* Pods-spaceTube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spaceTube.release.xcconfig"; path = "Pods/Target Support Files/Pods-spaceTube/Pods-spaceTube.release.xcconfig"; sourceTree = "<group>"; };
+		FF63B9866BEEE91F7E4308CD /* Pods-spaceTube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spaceTube.debug.xcconfig"; path = "Pods/Target Support Files/Pods-spaceTube/Pods-spaceTube.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BDEBE1CCC508A2F67F9BA3D /* Pods_spaceTube.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38109EC1FBE8473560A05569 /* Pods_spaceTubeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +99,8 @@
 				041671911FE3623C00B96429 /* spaceTubeTests */,
 				0416719C1FE3623C00B96429 /* spaceTubeUITests */,
 				0416717B1FE3623B00B96429 /* Products */,
+				7AD8739FE679151975F19C3D /* Pods */,
+				2A044F4CA34B4D7AB6C5C338 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,6 +181,26 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		2A044F4CA34B4D7AB6C5C338 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				61DC14CA0420A9AB893ACB4B /* Pods_spaceTube.framework */,
+				3C922E7DA6553992CA8FF4AC /* Pods_spaceTubeTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7AD8739FE679151975F19C3D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FF63B9866BEEE91F7E4308CD /* Pods-spaceTube.debug.xcconfig */,
+				E9A585E599907950E1E5ACCA /* Pods-spaceTube.release.xcconfig */,
+				861472BC897347C02E2C0A45 /* Pods-spaceTubeTests.debug.xcconfig */,
+				CCED20E51E4FF4082D20419F /* Pods-spaceTubeTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -177,9 +208,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 041671A21FE3623C00B96429 /* Build configuration list for PBXNativeTarget "spaceTube" */;
 			buildPhases = (
+				358DDF2B660D1F2A8F194847 /* [CP] Check Pods Manifest.lock */,
 				041671761FE3623B00B96429 /* Sources */,
+				50E747E91FE9F49300C4F230 /* SwiftLint Analysis */,
 				041671771FE3623B00B96429 /* Frameworks */,
 				041671781FE3623B00B96429 /* Resources */,
+				48E83DD380769F2A643A8F44 /* [CP] Embed Pods Frameworks */,
+				6F466492E2A9506EDBBBF9D1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,9 +229,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 041671A51FE3623C00B96429 /* Build configuration list for PBXNativeTarget "spaceTubeTests" */;
 			buildPhases = (
+				289F788B328D8F9904C8A5A7 /* [CP] Check Pods Manifest.lock */,
 				0416718A1FE3623C00B96429 /* Sources */,
+				50E747EA1FE9F51C00C4F230 /* SwifLint Analysis */,
 				0416718B1FE3623C00B96429 /* Frameworks */,
 				0416718C1FE3623C00B96429 /* Resources */,
+				3E3184071D2FE4FA6C3B7C0F /* [CP] Embed Pods Frameworks */,
+				5556CC1646CB383A43181877 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,7 +272,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Amber Spadafora";
 				TargetAttributes = {
 					041671791FE3623B00B96429 = {
@@ -277,7 +316,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				041671B11FE36DE000B96429 /* Info.plist in Resources */,
 				041671881FE3623C00B96429 /* LaunchScreen.storyboard in Resources */,
 				041671851FE3623C00B96429 /* Assets.xcassets in Resources */,
 				041671831FE3623C00B96429 /* Main.storyboard in Resources */,
@@ -299,6 +337,133 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		289F788B328D8F9904C8A5A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-spaceTubeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		358DDF2B660D1F2A8F194847 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-spaceTube-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E3184071D2FE4FA6C3B7C0F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-spaceTubeTests/Pods-spaceTubeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		48E83DD380769F2A643A8F44 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-spaceTube/Pods-spaceTube-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		50E747E91FE9F49300C4F230 /* SwiftLint Analysis */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Analysis";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ “$CI” = “true” ]; then\necho “Skipping SwiftLint on CI”\nexit 0\nfi\n\ncd spaceTube; ${PODS_ROOT}/SwiftLint/swiftlint";
+		};
+		50E747EA1FE9F51C00C4F230 /* SwifLint Analysis */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "SwifLint Analysis";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ “$CI” = “true” ]; then\necho “Skipping SwiftLint on CI”\nexit 0\nfi\n\ncd spaceTubeTests; ${PODS_ROOT}/SwiftLint/swiftlint";
+		};
+		5556CC1646CB383A43181877 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-spaceTubeTests/Pods-spaceTubeTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F466492E2A9506EDBBBF9D1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-spaceTube/Pods-spaceTube-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		041671761FE3623B00B96429 /* Sources */ = {
@@ -474,6 +639,7 @@
 		};
 		041671A31FE3623C00B96429 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF63B9866BEEE91F7E4308CD /* Pods-spaceTube.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -489,6 +655,7 @@
 		};
 		041671A41FE3623C00B96429 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9A585E599907950E1E5ACCA /* Pods-spaceTube.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -504,6 +671,7 @@
 		};
 		041671A61FE3623C00B96429 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 861472BC897347C02E2C0A45 /* Pods-spaceTubeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -521,6 +689,7 @@
 		};
 		041671A71FE3623C00B96429 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCED20E51E4FF4082D20419F /* Pods-spaceTubeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
