@@ -4,7 +4,6 @@ opt_in_rules:
 - closure_spacing
 - empty_count
 - explicit_init
-- explicit_type_interface
 - fatal_error_message
 - first_where
 - force_unwrapping
